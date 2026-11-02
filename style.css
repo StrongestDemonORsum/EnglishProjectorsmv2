@@ -1,9 +1,9 @@
-/* Schema Deck — Styles (React Bits inspired: glass, cards, backgrounds) */
+/* Schema Deck — Styles */
 * { box-sizing: border-box; margin: 0; padding: 0; }
 html, body { height: 100%; overflow: hidden; font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI Variable Text', 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; background: #0a0b0e; color: #f3f4f6; }
 #root { height: 100%; }
 
-/* ---- Background (React Bits: Backgrounds) ---- */
+/* Animated mesh background */
 .mesh { position: fixed; inset: 0; z-index: -1; overflow: hidden; }
 .blob { position: absolute; border-radius: 50%; filter: blur(64px); opacity: 0.4; animation: float 14s ease-in-out infinite; }
 .blob:nth-child(1) { top: -12%; left: -12%; width: 62vw; height: 62vw; background: #6366f1; animation-delay: 0s; }
@@ -11,24 +11,24 @@ html, body { height: 100%; overflow: hidden; font-family: 'Inter', system-ui, -a
 .blob:nth-child(3) { top: 18%; left: 58%; width: 48vw; height: 48vw; background: #0891b2; animation-delay: -10s; }
 @keyframes float { 0%,100% { transform: translate(0,0) scale(1); } 33% { transform: translate(14%,-10%) scale(1.12); } 66% { transform: translate(-10%,12%) scale(0.92); } }
 
-/* ---- Glass (React Bits: Components / Micro) ---- */
+/* Glass utilities */
 .glass { background: rgba(255,255,255,0.05); backdrop-filter: blur(20px) saturate(180%); -webkit-backdrop-filter: blur(20px) saturate(180%); border: 1px solid rgba(255,255,255,0.10); box-shadow: 0 20px 50px rgba(0,0,0,0.45); }
 .glass-panel { border-radius: 30px; background: rgba(14,16,22,0.6); }
 
-/* ---- Deck shell ---- */
+/* Deck shell */
 .deck { position: fixed; inset: 0; display: flex; align-items: center; justify-content: center; padding: 48px 28px; }
 .slide { width: 94vw; max-width: 1160px; height: 88vh; max-height: 800px; border-radius: 34px; border: 1px solid rgba(255,255,255,0.08); overflow: hidden; display: flex; flex-direction: column; opacity: 0; pointer-events: none; transform: scale(0.94) translateY(18px); transition: opacity 0.7s cubic-bezier(0.22,1,0.36,1), transform 0.7s cubic-bezier(0.22,1,0.36,1), pointer-events 0.7s; }
 .slide.active { opacity: 1; pointer-events: auto; transform: scale(1) translateY(0); }
 .slide-body { padding: 52px 64px; flex: 1; overflow-y: auto; display: flex; flex-direction: column; gap: 32px; }
 
-/* ---- Typography ---- */
+/* Typography */
 .slide h1 { font-size: 52px; font-weight: 800; letter-spacing: -0.025em; line-height: 1.05; margin-bottom: 10px; background: linear-gradient(135deg,#c4b5fd,#818cf8,#38bdf8,#0ea5e9); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
 .slide h2 { font-size: 30px; font-weight: 700; letter-spacing: -0.015em; margin-bottom: 8px; color: #f3f4f6; }
 .slide h3 { font-size: 19px; font-weight: 700; color: #f3f4f6; margin: 0 0 6px 0; }
 .slide p, .slide li { color: #cbd5e1; font-size: 15.5px; line-height: 1.65; }
 .slide .muted { color: #94a3b8; font-size: 13px; }
 
-/* ---- Reveal + stagger (React Bits: Text Animations) ---- */
+/* Reveal + stagger */
 .reveal { opacity: 0; transform: translateY(16px); transition: opacity 0.6s ease, transform 0.6s ease; }
 .slide.active .reveal { opacity: 1; transform: translateY(0); }
 .stagger-1 { transition-delay: 0.06s; }
@@ -36,7 +36,7 @@ html, body { height: 100%; overflow: hidden; font-family: 'Inter', system-ui, -a
 .stagger-3 { transition-delay: 0.22s; }
 .stagger-4 { transition-delay: 0.30s; }
 
-/* ---- Glass morphic buttons (React Bits: Components) ---- */
+/* 3 Glass morphic buttons */
 .buttons { display: flex; gap: 26px; justify-content: center; align-items: center; flex-wrap: wrap; }
 .glass-btn { position: relative; display: flex; flex-direction: column; align-items: center; gap: 12px; width: 240px; height: 200px; border-radius: 28px; cursor: pointer; color: #f3f4f6; text-decoration: none; overflow: hidden; transition: transform 0.5s cubic-bezier(0.34,1.56,0.64,1), border-color 0.3s ease, box-shadow 0.3s ease, background 0.3s ease; tap-highlight-color: transparent; }
 .glass-btn.glass { background: rgba(255,255,255,0.06); }
@@ -49,7 +49,7 @@ html, body { height: 100%; overflow: hidden; font-family: 'Inter', system-ui, -a
 .glass-label { font-weight: 800; font-size: 17px; letter-spacing: -0.01em; color: #fff; }
 .glass-cap { font-size: 12px; color: #94a3b8; text-align: center; padding: 0 14px; line-height: 1.45; }
 
-/* ---- Hover preview panel ---- */
+/* Hover preview panel */
 .preview-wrap { position: fixed; right: 42px; top: 50%; transform: translateY(-50%) translateX(52px); width: 320px; z-index: 55; opacity: 0; pointer-events: none; transition: transform 0.55s cubic-bezier(0.34,1.56,0.64,1), opacity 0.45s ease; }
 .preview-wrap.open { opacity: 1; pointer-events: auto; transform: translateY(-50%) translateX(0); }
 .preview-panel { border-radius: 22px; padding: 22px; overflow: hidden; position: relative; }
@@ -58,7 +58,7 @@ html, body { height: 100%; overflow: hidden; font-family: 'Inter', system-ui, -a
 .preview-panel h4 { font-size: 15px; font-weight: 800; margin-bottom: 6px; color: #f3f4f6; }
 .preview-panel p { font-size: 13px; color: #94a3b8; line-height: 1.5; }
 
-/* ---- Cards (React Bits: Components) ---- */
+/* Cards */
 .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; width: 100%; }
 .glass-card { border-radius: 22px; padding: 24px; display: flex; flex-direction: column; gap: 12px; transition: transform 0.3s ease, border-color 0.3s ease; cursor: default; }
 .glass-card:hover { transform: translateY(-4px); border-color: rgba(139,92,246,0.5); }
@@ -66,11 +66,11 @@ html, body { height: 100%; overflow: hidden; font-family: 'Inter', system-ui, -a
 .card-title { font-size: 16px; font-weight: 700; color: #f3f4f6; }
 .card-desc { color: #94a3b8; font-size: 13.5px; line-height: 1.5; margin: 0; }
 
-/* ---- Home card ---- */
+/* Home card */
 .home-card { width: 100%; max-width: 660px; padding: 44px; border-radius: 26px; display: flex; flex-direction: column; gap: 18px; }
 .home-chip { display: inline-flex; align-items: center; gap: 8px; padding: 7px 14px; border-radius: 999px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08); font-size: 11px; font-weight: 800; color: #818cf8; letter-spacing: 0.12em; text-transform: uppercase; }
 
-/* ---- Schema editor ---- */
+/* Schema editor */
 .schema-wrap { padding: 0 64px 52px; flex: 1; display: flex; flex-direction: column; gap: 22px; overflow-y: auto; }
 .schema-head h2 { font-size: 30px; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 6px; color: #f3f4f6; }
 .schema-head p { color: #94a3b8; font-size: 14px; }
@@ -86,7 +86,7 @@ textarea.schema { flex: 1; width: 100%; background: transparent; border: none; o
 textarea.schema::placeholder { color: #475569; }
 .schema-foot { display: flex; align-items: center; justify-content: space-between; font-size: 12px; color: #64748b; }
 
-/* ---- Nav UI ---- */
+/* Nav UI */
 .counter { position: fixed; top: 24px; right: 24px; z-index: 60; border-radius: 12px; padding: 7px 16px; font-size: 13px; font-weight: 800; color: #e2e8f0; }
 .hint { position: fixed; bottom: 24px; right: 24px; z-index: 60; border-radius: 12px; padding: 8px 16px; font-size: 12px; color: #94a3b8; font-weight: 700; }
 .progress { position: fixed; top: 0; left: 0; height: 4px; background: rgba(255,255,255,0.05); z-index: 58; }
